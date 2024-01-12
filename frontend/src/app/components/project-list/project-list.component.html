@@ -1,0 +1,45 @@
+<div *ngFor="let project of projects" class="card card-body mb-2">
+  <div class="row">
+    <div class="col-md-8">
+      <ul>
+        <li>
+          id: {{project._id}}
+        </li>
+        <li>
+          Nombre del Proyecto: {{project.nombre}}
+        </li>
+        <li>
+          Fecha de inicio del Proyecto: {{project.fechaInicio}}
+        </li>
+        <li>
+          Fecha de fin del Proyecto: {{project.fechaFinal}}
+        </li>
+        <li>
+          Ítems:
+          <ul>
+            <li *ngFor="let item of project.items">
+              {{item}}
+            </li>
+          </ul>
+        </li>
+        <li>
+          Valor Unitario: {{project.valorUnitario}}
+        </li>
+      </ul>
+      <button *ngIf="username === 'constructor'" [routerLink]="['/project/edit', project._id]" class="btn btn-secondary">
+        Edit
+      </button>
+      <button *ngIf="username === 'constructor'" (click)="deleteProject(project._id)" class="btn btn-danger">
+        Delete
+      </button>
+      <button *ngIf="username === 'proveedor'" [routerLink]="['/project/apply', project._id]" class="btn btn-primary">
+        Aplicar
+      </button>
+    </div>
+    <div class="col-md-4 row">
+      <div *ngFor="let image of project.imagenes">
+        <img [src]="image" class="card-img" style="height: 150px; width: 150px; margin: 0 10px">
+      </div>
+    </div>
+  </div>
+</div>

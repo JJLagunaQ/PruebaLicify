@@ -1,0 +1,67 @@
+<div *ngIf="this.router.url.includes('project/edit')" class="row mt-5">
+  <div class="col-sm-4 offset-sm-4">
+    <div class="card card-body">
+      <form (submit)="edit ? updateProject() : submitProject()">
+        <div class="form-group">
+          <input type="text" name="name" [(ngModel)]="project.nombre" class="form-control" placeholder="Project Name" autofocus>
+        </div>
+        <div class="form-group">
+          <input type="date" name="description" [(ngModel)]="project.fechaInicio" class="form-control" placeholder="Fecha de inicio">
+        </div>
+        <div class="form-group">
+          <input type="date" name="price" [(ngModel)]="project.fechaFinal" class="form-control" placeholder="Fecha de Finalización">
+        </div>
+        <div class="form-group">
+          <input type="text" name="description" [(ngModel)]="project.items" class="form-control" placeholder="Fecha de inicio">
+        </div>
+        <div class="form-group">
+          <input type="number" name="price" [(ngModel)]="project.valorUnitario" class="form-control" placeholder="Fecha de Finalización">
+        </div>
+        <div class="form-group">
+          <input type="file" name="imagenes" (change)="handleFileSelect($event)" class="form-control" placeholder="Image URL">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="this.router.url.includes('project/apply')" class="row mt-5">
+  <div class="col-sm-4 offset-sm-4">
+    <div class="card card-body">
+      <ul>
+        <li>
+          Nombre del Proyecto: {{project.nombre}}
+        </li>
+        <li>
+          Fecha de inicio del Proyecto: {{project.fechaInicio.toLocaleString()}}
+        </li>
+        <li>
+          Fecha de fin del Proyecto: {{project.fechaFinal.toLocaleString()}}
+        </li>
+        <li>
+          Ítems: {{project.items}}
+        </li>
+        <li>
+          Valor Unitario: {{project.valorUnitario}}
+        </li>
+      </ul>
+      <div class="col-md-4 row">
+        <div *ngFor="let image of project.imagenes">
+          <img [src]="image" class="card-img" style="height: 150px; width: 150px; margin: 0 10px">
+        </div>
+      </div>
+      <form (submit)="updateProject()" class="mt-5">
+        <div class="form-group">
+          <label>¿Desea Proponer un Valor Unitario para el proyecto?</label>
+          <input type="number" name="name" [(ngModel)]="project.valorUnitario" class="form-control" placeholder="Proponer un nuevo Valor Unitario" autofocus>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

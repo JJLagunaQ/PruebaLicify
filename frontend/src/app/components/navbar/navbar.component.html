@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">{{username !== '' ? username.toLocaleUpperCase() : 'Juan Laguna => Prueba Desarrollaror - Licify'}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div *ngIf="username !== ''" class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-20">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/project" routerLinkActive="active">Proyectos</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/project/create" routerLinkActive="active">Crear Nuevo Proyecto</a>
+      </li>
+    </ul>
+  </div>
+</nav>
